@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Student Performance & Career Prediction System | Sudhakar</title>
+
+    <meta name="description"
+        content="Explore an AI-Powered Student Performance and Career Prediction System using Machine Learning. Predict academic performance, discover suitable career paths and identify students needing academic support.">
+
+    <meta name="keywords"
+        content="AI Student Performance Prediction, Career Prediction System, Machine Learning Project, Student Analytics, AI Career Guidance, Python ML Project">
+
+    <meta name="author" content="Sudhakar">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://Sudhakar2007ak.github.io/">
+
+    <meta property="og:title"
+        content="AI-Powered Student Performance & Career Prediction System">
+
+    <meta property="og:description"
+        content="An intelligent machine learning platform for student performance prediction, career recommendations and academic support.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+        content="https://Sudhakar2007ak.github.io/">
+
+    <meta name="theme-color" content="#080d1b">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080d1b;
+            color: #f1f5f9;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 13, 27, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #202b42;
+        }
+
+        .navbar {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(14, 165, 233, 0.19),
+                    transparent 55%
+                );
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid #155e75;
+            border-radius: 30px;
+            color: #67e8f9;
+            background: rgba(8, 145, 178, 0.12);
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                #38bdf8,
+                #818cf8,
+                #c084fc
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #aab8cc;
+            font-size: 17px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: #06111f;
+            background: #38bdf8;
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #475569;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        /* COMMON SECTIONS */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #94a3b8;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .about-text {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #b5c2d4;
+            font-size: 16px;
+        }
+
+        /* FEATURES */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: #111a2e;
+            border: 1px solid #26344d;
+            border-radius: 15px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: #e0f2fe;
+        }
+
+        .feature-card p {
+            color: #9eacc1;
+            font-size: 14px;
+        }
+
+        /* WORKFLOW */
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .workflow-card {
+            text-align: center;
+            padding: 25px 15px;
+            background: #111a2e;
+            border: 1px solid #26344d;
+            border-radius: 13px;
+        }
+
+        .number {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 15px;
+            background: #0e7490;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .workflow-card p {
+            color: #9eacc1;
+            font-size: 13px;
+        }
+
+        /* TECHNOLOGIES */
+
+        .tech-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tech {
+            padding: 12px 22px;
+            background: #111a2e;
+            border: 1px solid #334155;
+            border-radius: 9px;
+            color: #bae6fd;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* PROJECT CTA */
+
+        .project-cta {
+            text-align: center;
+            padding: 60px 25px;
+            border: 1px solid #155e75;
+            border-radius: 20px;
+            background: linear-gradient(
+                120deg,
+                #10223b,
+                #172044
+            );
+        }
+
+        .project-cta h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .project-cta p {
+            color: #b5c2d4;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #26344d;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #38bdf8;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workflow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding: 75px 0;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .features-grid,
+            .workflow {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2,
+            .project-cta h2 {
+                font-size: 28px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="container navbar">
+            <a href="#" class="logo">AI Student System</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#contact">Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <header class="hero" id="home">
+        <div class="container hero-content">
+
+            <span class="tag">
+                ARTIFICIAL INTELLIGENCE & MACHINE LEARNING PROJECT
+            </span>
+
+            <h1>
+                AI-Powered Student
+                <span class="gradient">
+                    Performance & Career Prediction
+                </span>
+                System
+            </h1>
+
+            <p>
+                An intelligent platform that analyzes student academic
+                performance, skills and learning patterns to predict
+                academic outcomes, recommend suitable career domains
+                and identify students who may need academic support.
+            </p>
+
+            <div class="buttons">
+                <a
+                    href="https://sudhakar2007ak-ai-student-performance-career-predict-app-ztkmcv.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    🚀 Launch Live Project
+                </a>
+
+                <a
+                    href="https://github.com/Sudhakar2007ak/AI-Student-Performance-Career-Prediction"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary">
+                    💻 View Source Code
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>About <span class="gradient">The Project</span></h2>
+                <p>Making student analytics smarter with artificial intelligence.</p>
+            </div>
+
+            <p class="about-text">
+                The AI-Powered Student Performance & Career Prediction
+                System is a machine learning-based application designed
+                to help understand student performance and career
+                possibilities. It analyzes academic marks, attendance,
+                technical skills, communication skills, projects,
+                certifications and learning habits.
+
+                The system generates performance predictions,
+                suggests potential career domains and identifies
+                students who may require additional academic support.
+                An interactive dashboard presents insights through
+                visualizations and prediction results.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+
+    <section id="features">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Key <span class="gradient">Features</span></h2>
+                <p>Intelligent features designed to support students and educators.</p>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Performance Prediction</h3>
+                    <p>
+                        Uses machine learning to estimate student
+                        academic performance from learning and
+                        assessment data.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Career Prediction</h3>
+                    <p>
+                        Identifies potential career domains such as
+                        AI/ML Engineering, Software Development,
+                        Data Science and UI/UX Design.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Academic Support Risk</h3>
+                    <p>
+                        Helps identify students who may need
+                        additional academic guidance and support.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Skill Analysis</h3>
+                    <p>
+                        Analyzes coding, communication,
+                        problem-solving skills, projects and
+                        certifications.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Interactive Dashboard</h3>
+                    <p>
+                        Displays student information, predictions
+                        and analytical insights through graphs
+                        and visualizations.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Machine Learning</h3>
+                    <p>
+                        Uses trained machine learning models
+                        to analyze student data and generate
+                        predictions.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW -->
+
+    <section id="workflow">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>How It <span class="gradient">Works</span></h2>
+                <p>A simple workflow for intelligent student analysis.</p>
+            </div>
+
+            <div class="workflow">
+
+                <div class="workflow-card">
+                    <div class="number">1</div>
+                    <h3>Data Collection</h3>
+                    <p>Collect academic, skill and learning information.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="number">2</div>
+                    <h3>Data Analysis</h3>
+                    <p>Process student information using Python.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="number">3</div>
+                    <h3>ML Prediction</h3>
+                    <p>Generate performance, career and support-risk predictions.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="number">4</div>
+                    <h3>Visualization</h3>
+                    <p>Present insights through an interactive dashboard.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+
+    <section id="technology">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Technologies <span class="gradient">Used</span></h2>
+                <p>Tools and frameworks used to develop the application.</p>
+            </div>
+
+            <div class="tech-list">
+                <span class="tech">Python</span>
+                <span class="tech">Pandas</span>
+                <span class="tech">NumPy</span>
+                <span class="tech">Scikit-learn</span>
+                <span class="tech">Machine Learning</span>
+                <span class="tech">Streamlit</span>
+                <span class="tech">MySQL</span>
+                <span class="tech">Aiven Cloud</span>
+                <span class="tech">Plotly</span>
+                <span class="tech">GitHub</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LIVE PROJECT -->
+
+    <section id="contact">
+        <div class="container">
+
+            <div class="project-cta">
+                <h2>
+                    Explore the
+                    <span class="gradient">Live Project</span>
+                </h2>
+
+                <p>
+                    Experience the AI-powered student performance
+                    and career prediction application.
+                </p>
+
+                <div class="buttons">
+
+                    <a
+                        href="https://sudhakar2007ak-ai-student-performance-career-predict-app-ztkmcv.streamlit.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-primary">
+                        🚀 Open Application
+                    </a>
+
+                    <a
+                        href="https://github.com/Sudhakar2007ak/AI-Student-Performance-Career-Prediction"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary">
+                        View GitHub Repository
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 AI-Powered Student Performance & Career
+                Prediction System.
+            </p>
+
+            <p>
+                Developed by Sudhakar |
+                <a href="https://github.com/Sudhakar2007ak"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub Profile
+                </a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
