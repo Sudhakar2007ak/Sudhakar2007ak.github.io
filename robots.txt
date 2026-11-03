@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sudhakar2007ak.github.io/sitemap.xml
